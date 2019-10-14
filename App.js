@@ -9,6 +9,7 @@ import { Ionicons } from "@expo/vector-icons";
 import Loading from "./components/Loading";
 import ItemsList from "./components/ItemsList";
 import AppContainer from "./Navigation";
+import SignupForm from "./components/SignupForm";
 
 export default class App extends React.Component {
   constructor(props) {

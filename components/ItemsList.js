@@ -1,11 +1,15 @@
 import React from "react";
 import { connect } from "react-redux";
-import { View, Row } from "native-base";
+
+import { View, List } from "native-base";
+
 // Components
 import Loading from "./Loading";
 import ItemCard from "./ItemCard";
-import { fetchItems } from "../redux/actions";
 import SearchBars from "./SearchBars";
+
+import { fetchItems } from "../redux/actions";
+
 
 class ItemsList extends React.Component {
   state = { collapsed: false };
@@ -16,10 +20,11 @@ class ItemsList extends React.Component {
     const allItems = this.props.filteredItems.map(item => (
       <ItemCard key={item.title} item={item} />
     ));
+    if (this.props.loading) return <Loading />;
     return (
       <View>
         <SearchBars />
-        <Row>{this.props.loading ? <Loading /> : allItems}</Row>
+        <List>{allItems}</List>
       </View>
     );
   }
