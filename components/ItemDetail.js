@@ -10,7 +10,8 @@ import {
   Button,
   Icon,
   Left,
-  Body
+  Body,
+  Right
 } from "native-base";
 
 // Components
@@ -22,7 +23,7 @@ import * as actionCreators from "../redux/actions/index";
 
 class ItemDetail extends Component {
   componentDidMount() {
-    this.props.getItem(this.props.match.params.itemID);
+    this.props.getItem(this.props.navigation.getParam("itemID"));
   }
   render() {
     if (!this.props.item) {
@@ -45,7 +46,7 @@ class ItemDetail extends Component {
               <CardItem>
                 <Body>
                   <Image
-                    source={{ uri: "item.image" }}
+                    source={{ uri: item.image }}
                     style={{ height: 200, width: 200, flex: 1 }}
                   />
                   <Text>description: {item.description}</Text>
@@ -54,10 +55,16 @@ class ItemDetail extends Component {
               <CardItem>
                 <Left>
                   <Button transparent textStyle={{ color: "#87838B" }}>
-                    <Icon name="shopping-cart" type="FontAwesome" />
                     <Text>Price: {item.price}</Text>
                   </Button>
                 </Left>
+                <Right>
+                  <Body>
+                    <Icon name="shopping-cart" type="FontAwesome">
+                      <Text>Add To Cart</Text>
+                    </Icon>
+                  </Body>
+                </Right>
               </CardItem>
             </Card>
           </Content>

@@ -8,6 +8,7 @@ import { Ionicons } from "@expo/vector-icons";
 //components
 import Loading from "./components/Loading";
 import ItemsList from "./components/ItemsList";
+import AppContainer from "./Navigation";
 
 export default class App extends React.Component {
   constructor(props) {
@@ -33,7 +34,7 @@ export default class App extends React.Component {
     }
     return (
       <Provider store={store}>
-        <ItemsList />
+        <AppContainer />
       </Provider>
     );
   }

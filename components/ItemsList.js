@@ -6,6 +6,7 @@ import Loading from "./Loading";
 import ItemCard from "./ItemCard";
 import { fetchItems } from "../redux/actions";
 import SearchBars from "./SearchBars";
+
 class ItemsList extends React.Component {
   state = { collapsed: false };
   componentDidMount() {
