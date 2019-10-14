@@ -3,14 +3,21 @@ import React, { Component } from "react";
 import { Image } from "react-native";
 import { Link } from "react-router-dom";
 
-import { Container, Header, Content, Card, CardItem, Text } from "native-base";
+import {
+  Container,
+  Header,
+  Content,
+  Card,
+  CardItem,
+  Text,
+  ListItem
+} from "native-base";
 
 class ItemCard extends Component {
   render() {
     const item = this.props.item;
     return (
-      <Container>
-        <Header />
+      <ListItem>
         <Content>
           <Card>
             <CardItem cardBody>
@@ -24,7 +31,7 @@ class ItemCard extends Component {
             </CardItem>
           </Card>
         </Content>
-      </Container>
+      </ListItem>
     );
   }
 }
