@@ -10,6 +10,7 @@ import SearchBars from "./SearchBars";
 
 import { fetchItems } from "../redux/actions";
 
+
 class ItemsList extends React.Component {
   state = { collapsed: false };
   componentDidMount() {
