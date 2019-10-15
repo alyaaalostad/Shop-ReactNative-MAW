@@ -1,5 +1,5 @@
 import * as actionTypes from "./actionTypes";
-
+import instance from "./instance";
 import axios from "axios";
 
 export const fetchItemDetail = itemID => {
@@ -8,7 +8,7 @@ export const fetchItemDetail = itemID => {
       type: actionTypes.SET_ITEM_LOADING
     });
     try {
-      const res = await axios.get(`http://127.0.0.1:8000/item/${itemID}/`);
+      const res = await instance.get(`item/${itemID}/`);
       const item = res.data;
       dispatch({
         type: actionTypes.FETCH_ITEM_DETAIL,
