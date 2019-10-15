@@ -1,8 +1,7 @@
 import React from "react";
 import { connect } from "react-redux";
-
-import { View, List } from "native-base";
-
+import { List, Content, Container } from "native-base";
+import { Image, View } from "react-native";
 // Components
 import Loading from "./Loading";
 import ItemCard from "./ItemCard";
@@ -10,10 +9,10 @@ import SearchBars from "./SearchBars";
 
 import { fetchItems } from "../redux/actions";
 
-
 class ItemsList extends React.Component {
   state = { collapsed: false };
   componentDidMount() {
+    // console.log("In component did mount", this.props.items);
     this.props.fetchItems();
   }
   render() {
@@ -22,17 +21,17 @@ class ItemsList extends React.Component {
     ));
     if (this.props.loading) return <Loading />;
     return (
-      <View>
+      <Content>
         <SearchBars />
         <List>{allItems}</List>
-      </View>
+      </Content>
     );
   }
 }
 const mapStateToProps = state => ({
-  items: state.rootList.items,
-  filteredItems: state.rootList.filteredItems,
-  loading: state.rootList.loading
+  items: state.listState.items,
+  filteredItems: state.listState.filteredItems,
+  loading: state.listState.loading
 });
 const mapDispatchToProps = dispatch => {
   return {

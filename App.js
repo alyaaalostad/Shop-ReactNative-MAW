@@ -10,7 +10,9 @@ import Loading from "./components/Loading";
 import ItemsList from "./components/ItemsList";
 import AppContainer from "./Navigation";
 import SignupForm from "./components/SignupForm";
+import { fetchItems } from "./redux/actions";
 
+store.dispatch(fetchItems());
 export default class App extends React.Component {
   constructor(props) {
     super(props);
