@@ -8,7 +8,7 @@ export const fetchItemDetail = itemID => {
       type: actionTypes.SET_ITEM_LOADING
     });
     try {
-      const res = await instance.get(`item/${itemID}/`);
+      const res = await instance.get(`items/${itemID}/`);
       const item = res.data;
       dispatch({
         type: actionTypes.FETCH_ITEM_DETAIL,
