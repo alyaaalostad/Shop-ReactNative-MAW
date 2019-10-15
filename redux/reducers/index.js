@@ -1,11 +1,11 @@
 import { combineReducers } from "redux";
 
 // Reducers
-import itemReducer from "./ItemDetail";
+import detailReducer from "./ItemDetail";
 import listReducer from "./ItemsList";
 import authReducer from "./authReducer";
 export default combineReducers({
-  rootState: listReducer,
-  itemState: itemReducer,
+  listState: listReducer,
+  detailState: detailReducer,
   authState: authReducer
 });

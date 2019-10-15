@@ -17,7 +17,7 @@ import {
 // Components
 import Loading from "./Loading";
 import { connect } from "react-redux";
-//description, quantity, price
+
 //actions
 import * as actionCreators from "../redux/actions/index";
 
@@ -75,7 +75,7 @@ class ItemDetail extends Component {
 }
 const mapStateToProps = state => {
   return {
-    item: state.itemState.item
+    item: state.detailState.item
   };
 };
 const mapDispatchToProps = dispatch => {
