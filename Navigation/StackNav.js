@@ -1,4 +1,6 @@
 import { createStackNavigator } from "react-navigation-stack";
+
+//components
 import ItemDetail from "../components/ItemDetail";
 import ItemList from "../components/ItemsList";
 import SignupForm from "../components/SignupForm";

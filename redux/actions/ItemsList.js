@@ -1,13 +1,12 @@
-import { FETCH_ITEMS, FILTER_ITEMS } from "./actionTypes";
 import instance from "./instance";
-import axios from "axios";
+
+import { FETCH_ITEMS, FILTER_ITEMS } from "./actionTypes";
 
 export const fetchItems = () => {
   return async dispatch => {
     try {
       const response = await instance.get("items/");
       const items = response.data;
-      // console.log("items ", items);
       dispatch({
         type: FETCH_ITEMS,
         payload: items
@@ -17,6 +16,7 @@ export const fetchItems = () => {
     }
   };
 };
+
 export const filterItems = query => {
   return {
     type: FILTER_ITEMS,

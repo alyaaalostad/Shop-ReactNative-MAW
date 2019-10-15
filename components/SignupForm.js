@@ -97,6 +97,7 @@ class SignupForm extends Component {
 const mapStateToProps = state => ({
   user: state.authState.user
 });
+
 const mapDispatchToProps = dispatch => {
   return {
     login: (userData, navigation) => dispatch(login(userData, navigation)),

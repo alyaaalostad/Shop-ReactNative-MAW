@@ -1,44 +1,31 @@
-import React from "react";
+import React, { Component } from "react";
 import { connect } from "react-redux";
-import { List, Content, Container } from "native-base";
-import { Image, View } from "react-native";
+
+import { List, Content } from "native-base";
+
 // Components
 import Loading from "./Loading";
 import ItemCard from "./ItemCard";
-import SearchBars from "./SearchBars";
+import Searchbar from "./Searchbar";
 
-import { fetchItems } from "../redux/actions";
-
-class ItemsList extends React.Component {
-  state = { collapsed: false };
-  componentDidMount() {
-    // console.log("In component did mount", this.props.items);
-    this.props.fetchItems();
-  }
+class ItemsList extends Component {
   render() {
     const allItems = this.props.filteredItems.map(item => (
       <ItemCard key={item.title} item={item} />
     ));
-    if (this.props.loading) return <Loading />;
     return (
       <Content>
-        <SearchBars />
-        <List>{allItems}</List>
+        <Searchbar />
+        <List>{this.props.loading ? <Loading /> : allItems}</List>
       </Content>
     );
   }
 }
+
 const mapStateToProps = state => ({
+  loading: state.listState.loading,
   items: state.listState.items,
-  filteredItems: state.listState.filteredItems,
-  loading: state.listState.loading
+  filteredItems: state.listState.filteredItems
 });
-const mapDispatchToProps = dispatch => {
-  return {
-    fetchItems: () => dispatch(fetchItems())
-  };
-};
-export default connect(
-  mapStateToProps,
-  mapDispatchToProps
-)(ItemsList);
+
+export default connect(mapStateToProps)(ItemsList);
