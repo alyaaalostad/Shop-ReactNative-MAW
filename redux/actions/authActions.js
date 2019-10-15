@@ -2,10 +2,7 @@ import { SET_CURRENT_USER } from "./actionTypes";
 import axios from "axios";
 import jwt_decode from "jwt-decode";
 import { AsyncStorage } from "react-native";
-
-const instance = axios.create({
-  baseURL: "http://178.128.114.232/api/"
-});
+import instance from "./instance";
 
 export const checkForExpiredToken = navigation => {
   return async dispatch => {
@@ -36,10 +33,10 @@ export const checkForExpiredToken = navigation => {
 const setAuthToken = async token => {
   if (token) {
     await AsyncStorage.setItem("token", token);
-    axios.defaults.headers.common.Authorization = `jwt ${token}`;
+    instance.defaults.headers.common.Authorization = `jwt ${token}`;
   } else {
     await AsyncStorage.removeItem("token");
-    delete axios.defaults.headers.common.Authorization;
+    delete instance.defaults.headers.common.Authorization;
   }
 };
 
@@ -66,8 +63,8 @@ export const login = (userData, navigation) => {
 export const signup = (userData, navigation) => {
   return async dispatch => {
     try {
-      await instance.post("register/", userData);
-      dispatch(login(userData, navigation));
+      let res = await instance.post("register/", userData);
+      //   dispatch(login(userData, navigation));
     } catch (error) {
       console.error(error);
     }
