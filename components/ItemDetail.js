@@ -1,6 +1,8 @@
 import React, { Component } from "react";
 import { connect } from "react-redux";
-
+//actions
+import * as actionCreators from "../redux/actions/";
+import { addItem } from "../redux/actions";
 import { Image } from "react-native";
 import {
   Container,
@@ -42,18 +44,27 @@ class ItemDetail extends Component {
                   source={{ uri: item.image }}
                   style={{ height: 200, width: 200, flex: 1 }}
                 />
-                <Text>description: {item.description}</Text>
+                <Text>Description: {item.description}</Text>
               </Body>
             </CardItem>
             <CardItem>
-              <Left>
-                <Button transparent textStyle={{ color: "#87838B" }}>
-                  <Text>Price: {item.price}</Text>
-                </Button>
-              </Left>
+              <Body transparent textStyle={{ color: "#87838B" }}>
+                <Text>Quantity: {item.quantity}</Text>
+              </Body>
+            </CardItem>
+            <CardItem>
+              <Body transparent textStyle={{ color: "#87838B" }}>
+                <Text>Price: ${item.price}</Text>
+              </Body>
               <Right>
                 <Body>
-                  <Icon name="shopping-cart" type="FontAwesome">
+                  <Icon
+                    name="shopping-cart"
+                    type="FontAwesome"
+                    onPress={() =>
+                      this.props.addItem(item, this.props.navigation)
+                    }
+                  >
                     <Text>Add To Cart</Text>
                   </Icon>
                 </Body>
@@ -71,5 +82,13 @@ const mapStateToProps = state => {
     items: state.listState.items
   };
 };
+const mapDispatchToProps = dispatch => {
+  return {
+    addItem: (item, navigation) => dispatch(addItem(item, navigation))
+  };
+};
 
-export default connect(mapStateToProps)(ItemDetail);
+export default connect(
+  mapStateToProps,
+  mapDispatchToProps
+)(ItemDetail);
