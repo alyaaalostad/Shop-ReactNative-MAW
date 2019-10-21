@@ -1,12 +1,25 @@
 import React, { Component } from "react";
 import { connect } from "react-redux";
+import IconRegister from "./IconRegister";
 
-import { List, Content } from "native-base";
+import {
+  List,
+  Content,
+  Button,
+  Text,
+  Header,
+  Left,
+  Right,
+  Title,
+  Icon,
+  Body
+} from "native-base";
 
 // Components
 import Loading from "./Loading";
 import ItemCard from "./ItemCard";
 import Searchbar from "./Searchbar";
+import { login, signup, checkForExpiredToken, logout } from "../redux/actions";
 
 class ItemsList extends Component {
   render() {
@@ -17,6 +30,7 @@ class ItemsList extends Component {
       <Content>
         <Searchbar />
         <List>{this.props.loading ? <Loading /> : allItems}</List>
+        <></>
       </Content>
     );
   }
@@ -27,5 +41,19 @@ const mapStateToProps = state => ({
   items: state.listState.items,
   filteredItems: state.listState.filteredItems
 });
+const mapDispatchToProps = dispatch => {
+  return {
+    login: (userData, navigation) => dispatch(login(userData, navigation)),
+    checkForToken: navigation => dispatch(checkForExpiredToken(navigation))
+  };
+};
+ItemsList.navigationOptions = () => {
+  return {
+    headerRight: <IconRegister />
+  };
+};
 
-export default connect(mapStateToProps)(ItemsList);
+export default connect(
+  mapStateToProps,
+  mapDispatchToProps
+)(ItemsList);

@@ -35,14 +35,28 @@ class SignupForm extends Component {
       return (
         <View>
           <Button
+            style={{
+              backgroundColor: "#6ea181",
+              marginTop: 40,
+              width: 100,
+              height: 50,
+              marginLeft: 150
+            }}
             onPress={() => this.props.login(this.state, this.props.navigation)}
           >
-            <Text>Login</Text>
+            <Text style={{ marginLeft: 10 }}>Login</Text>
           </Button>
           <Button
+            style={{
+              backgroundColor: "#6ea181",
+              marginTop: 2,
+              marginLeft: 150,
+              width: 100,
+              height: 50
+            }}
             onPress={() => this.props.signup(this.state, this.props.navigation)}
           >
-            <Text>Signup</Text>
+            <Text style={{ marginLeft: 5 }}> Signup</Text>
           </Button>
         </View>
       );
@@ -56,7 +70,7 @@ class SignupForm extends Component {
     } else {
       return (
         <View>
-          <Item>
+          <Item style={{ borderStyle: "solid", borderWidth: 5 }}>
             <Input
               name="username"
               value={username}

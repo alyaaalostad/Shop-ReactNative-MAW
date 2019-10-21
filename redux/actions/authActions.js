@@ -26,7 +26,7 @@ export const checkForExpiredToken = navigation => {
 const setAuthToken = async token => {
   if (token) {
     await AsyncStorage.setItem("token", token);
-    instance.defaults.headers.common.Authorization = `jwt ${token}`;
+    instance.defaults.headers.common.Authorization = `Bearer ${token}`;
   } else {
     await AsyncStorage.removeItem("token");
     delete instance.defaults.headers.common.Authorization;
@@ -43,8 +43,8 @@ export const login = userData => {
     try {
       let response = await instance.post("login/", userData);
       let user = response.data;
-      let decodedUser = jwt_decode(user.token);
-      setAuthToken(user.token);
+      let decodedUser = jwt_decode(user.access);
+      setAuthToken(user.access);
       dispatch(setCurrentUser(decodedUser));
     } catch (error) {
       console.error(error);
