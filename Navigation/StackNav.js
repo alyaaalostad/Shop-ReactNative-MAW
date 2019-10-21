@@ -11,13 +11,14 @@ const StackNav = createStackNavigator(
     ListScreen: ItemList,
     DetailScreen: ItemDetail,
     CartScreen: ItemCart
+    // SearchScreen: ITemSearch
   },
   {
-    initialRouteName: "ListScreen",
+    initialRouteName: "SingupScreen",
     defaultNavigationOptions: {
       headerTintColor: "white",
       headerStyle: {
-        backgroundColor: "rgb(20,90,100).",
+        backgroundColor: "#489c63",
         fontWeight: "bold"
       }
     }
