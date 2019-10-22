@@ -1,20 +1,19 @@
 import React, { Component } from "react";
-import { Icon, Right, Text, View } from "native-base";
+import { Icon, Left, Text, View, Button } from "native-base";
 import { withNavigation } from "react-navigation";
 import { connect } from "react-redux";
 
 class CartButton extends Component {
   render() {
     return (
-      <View>
+      <View style={{ marginRight: 40 }}>
         <Icon
-          onPress={() => this.props.navigation.navigate("ItemCart")}
-          name="shoppingcart"
-          type="AntDesign"
+          name="shopping-cart"
+          type="FontAwesome5"
+          transparent
+          onPress={() => this.props.navigation.navigate("CartScreen")}
         />
-        <Right>
-          <Text>{this.props.cart.length}</Text>
-        </Right>
+        <Text> {this.props.cart.length}</Text>
       </View>
     );
   }

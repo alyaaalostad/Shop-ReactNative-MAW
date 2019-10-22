@@ -2,29 +2,37 @@ import React, { Component } from "react";
 import { connect } from "react-redux";
 
 //Actions
-import { removeItem } from "../redux/actions";
+import { removeCart } from "../redux/actions";
 
 // NativeBase Components
-import { Text, Left, Body, Right, Button, ListItem, Icon } from "native-base";
+import {
+  Text,
+  Left,
+  Body,
+  Right,
+  Button,
+  ListItem,
+  Icon,
+  Container
+} from "native-base";
 
 class ItemCartForm extends Component {
   render() {
-    const { cart } = this.props;
+    const { cartItem } = this.props;
     return (
       <ListItem style={{ borderBottomWidth: 0 }}>
         <Left>
           <Text style={{ color: "black", marginLeft: 16 }}>
-            {" "}
-            {cart.cart.title}{" "}
+            {cartItem.item.title}
           </Text>
         </Left>
-        <Text style={{ color: "black" }}>Quantity: {cart.quantity}</Text>
+        <Text style={{ color: "black" }}>Quantity: {cartItem.quantity}</Text>
 
         <Body>
-          <Text style={{ color: "black" }}>${cart.cart.price}</Text>
+          <Text style={{ color: "black" }}>${cartItem.item.price}</Text>
         </Body>
         <Right>
-          <Button onPress={() => this.props.removeItem(cart)} transparent>
+          <Button onPress={() => this.props.removeCart(cartItem)} transparent>
             <Icon name="trash" style={{ color: "black", fontSize: 21 }} />
           </Button>
         </Right>
@@ -32,14 +40,17 @@ class ItemCartForm extends Component {
     );
   }
 }
+const mapStateToProps = state => ({
+  cart: state.cartState.cart
+});
 
 const mapDispatchToProps = dispatch => {
   return {
-    removeItem: item => dispatch(removeItem(item))
+    removeCart: item => dispatch(removeCart(item))
   };
 };
 
 export default connect(
-  null,
+  mapStateToProps,
   mapDispatchToProps
 )(ItemCartForm);

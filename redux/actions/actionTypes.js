@@ -3,7 +3,7 @@ export const FILTER_ITEMS = "FILTER_ITEMS";
 
 export const SET_CURRENT_USER = "SET_CURRENT_USER";
 
-export const ADD_ITEM = "ADD_ITEM";
-export const REMOVE_ITEM = "REMOVE_ITEM";
+export const ADD_CART = "ADD_CART";
+export const REMOVE_CART = "REMOVE_CART";
 
 export const CHECKOUT = "CHECKOUT";

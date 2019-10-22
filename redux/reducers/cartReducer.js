@@ -1,38 +1,34 @@
-import { ADD_ITEM, REMOVE_ITEM, CHECKOUT } from "../actions/actionTypes";
+import { REMOVE_CART, ADD_CART, CHECKOUT } from "../actions/actionTypes";
 const initialState = {
   cart: []
 };
-
 const cartReducer = (state = initialState, action) => {
   switch (action.type) {
-    case ADD_ITEM:
-      let foundItem = state.cart.find(
-        item => item.id === action.payload.item.id
-      );
-      if (foundItem) {
-        foundItem.quantity++;
-
-        return {
-          ...state,
-          cart: [...state.cart]
-        };
-      } else {
-        return {
-          ...state,
-          cart: state.cart.concat({ cart: action.payload, quantity: 1 })
-        };
-      }
-    case REMOVE_ITEM:
+    case REMOVE_CART:
       let newcart2 = state.cart.filter(item => item !== action.payload);
       return {
         ...state,
         cart: [...newcart2]
       };
-    case CHECKOUT:
-      alert("Thank you for shopping with us!!");
+    case ADD_CART:
+      let newItems = state.cart;
+      let item = newItems.find(orderItem => {
+        return action.payload.item.id === orderItem.item.id;
+      });
+
+      item
+        ? (item.quantity += 1) &&
+          (item.item.price = item.item.price * item.quantity)
+        : newItems.push(action.payload);
       return {
         ...state,
-        cart: []
+        cart: [...newItems]
+      };
+    case CHECKOUT:
+      return {
+        ...state,
+        cart: [],
+        quantity: 0
       };
     default:
       return state;
