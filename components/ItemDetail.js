@@ -2,8 +2,10 @@ import React, { Component } from "react";
 import { connect } from "react-redux";
 //actions
 import * as actionCreators from "../redux/actions/";
-import { addItem } from "../redux/actions";
+import { addCart } from "../redux/actions";
 import { Image } from "react-native";
+//components
+import CartButton from "./CartButton";
 import {
   Container,
   Header,
@@ -61,9 +63,7 @@ class ItemDetail extends Component {
                   <Icon
                     name="shopping-cart"
                     type="FontAwesome"
-                    onPress={() =>
-                      this.props.addItem(item, this.props.navigation)
-                    }
+                    onPress={() => this.props.addCart({ item, quantity: 1 })}
                   >
                     <Text>Add To Cart</Text>
                   </Icon>
@@ -84,8 +84,13 @@ const mapStateToProps = state => {
 };
 const mapDispatchToProps = dispatch => {
   return {
-    addItem: (item, navigation) => dispatch(addItem(item, navigation))
+    addCart: item => dispatch(addCart(item))
   };
+};
+
+ItemDetail.navigationOptions = {
+  headLeft: null,
+  headerRight: <CartButton />
 };
 
 export default connect(

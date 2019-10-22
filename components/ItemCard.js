@@ -2,8 +2,16 @@ import React, { Component } from "react";
 import { withNavigation } from "react-navigation";
 
 import { Image } from "react-native";
-import { Content, Card, CardItem, Text, ListItem } from "native-base";
-
+import {
+  Content,
+  Card,
+  CardItem,
+  Text,
+  ListItem,
+  Body,
+  Icon
+} from "native-base";
+import { connect } from "react-redux";
 function ItemCard(props) {
   const handlePress = () => {
     props.navigation.navigate("DetailScreen", { itemID: item.id });
@@ -25,5 +33,12 @@ function ItemCard(props) {
     </ListItem>
   );
 }
-
-export default withNavigation(ItemCard);
+const mapDispatchToProps = dispatch => {
+  return {
+    addCart: item => dispatch(addCart(item))
+  };
+};
+export default connect(
+  null,
+  mapDispatchToProps
+)(withNavigation(ItemCard));
