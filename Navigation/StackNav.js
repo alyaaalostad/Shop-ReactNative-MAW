@@ -16,7 +16,7 @@ const StackNav = createStackNavigator(
     // SearchScreen: ITemSearch
   },
   {
-    initialRouteName: "WelcomeScreen",
+    initialRouteName: "ListScreen",
     defaultNavigationOptions: {
       headerTintColor: "white",
       headerStyle: {
