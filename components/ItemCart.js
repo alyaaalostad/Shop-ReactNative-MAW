@@ -1,6 +1,7 @@
 import React, { Component } from "react";
 import { connect } from "react-redux";
 import { ImageBackground, Text, View, StyleSheet } from "react-native";
+import splash from "../assets/splash2.png";
 // NativeBase Components
 import { List, Button, Container } from "native-base";
 // Component
@@ -13,7 +14,7 @@ import { checkout } from "../redux/actions";
 class ItemCart extends Component {
   Total = cart => {
     const total = cart.reduce(
-      (counter, item) => parseInt(counter) + parseInt(item.item.price),
+      (counter, item) => parseFloat(counter) + parseFloat(item.item.price),
       0
     );
 
@@ -21,6 +22,24 @@ class ItemCart extends Component {
       return total;
     }
     return 0;
+  };
+  onClick = () => {
+    if (this.props.user)
+      return (
+        <Button success onPress={() => this.props.checkout()}>
+          <Text style={{ marginLeft: 170 }}>Checkout</Text>
+        </Button>
+      );
+    else {
+      return (
+        <Button
+          success
+          onPress={() => this.props.navigation.navigate("SingupScreen")}
+        >
+          <Text style={{ marginLeft: 170 }}>Checkout</Text>
+        </Button>
+      );
+    }
   };
   render() {
     let cart = this.props.cart;
@@ -34,10 +53,7 @@ class ItemCart extends Component {
     return (
       <Container>
         <ImageBackground
-          source={{
-            uri:
-              "https://i.pinimg.com/474x/78/85/2c/78852cb7b283f3b465655c343f0ee92a.jpg"
-          }}
+          source={splash}
           style={{ flex: 1, width: null, height: null }}
         >
           <List>
@@ -45,9 +61,7 @@ class ItemCart extends Component {
             <Text style={{ color: "black" }}>
               Total:${this.Total(this.props.cart)}
             </Text>
-            <Button success onPress={() => this.props.checkout()}>
-              <Text style={{ marginLeft: 170 }}>Checkout</Text>
-            </Button>
+            {this.onClick()}
           </List>
         </ImageBackground>
       </Container>
@@ -56,7 +70,8 @@ class ItemCart extends Component {
 }
 
 const mapStateToProps = state => ({
-  cart: state.cartState.cart
+  cart: state.cartState.cart,
+  user: state.authState.user
 });
 
 const mapDispatchToProps = dispatch => {

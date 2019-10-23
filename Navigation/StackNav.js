@@ -20,8 +20,7 @@ const StackNav = createStackNavigator(
   },
   {
     initialRouteName: "ListScreen",
-  },
-  {
+
     defaultNavigationOptions: {
       headerTintColor: "white",
       headerStyle: {

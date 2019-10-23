@@ -15,14 +15,12 @@ import {
   Right
 } from "native-base";
 import greenHouse from "../assets/greenHouse.jpg";
+import splash from "../assets/splash2.png";
 class WelcomePage extends Component {
   render() {
     return (
       <ImageBackground
-        source={{
-          uri:
-            "https://i.pinimg.com/474x/78/85/2c/78852cb7b283f3b465655c343f0ee92a.jpg"
-        }}
+        source={splash}
         style={{ flex: 1, width: null, height: null }}
       >
         <Image

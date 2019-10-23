@@ -12,7 +12,8 @@ import {
 import { ImageBackground, Text, View, StyleSheet } from "react-native";
 import { connect } from "react-redux";
 
-import { login, signup, checkForExpiredToken } from "../redux/actions";
+import { login, signup, checkForExpiredToken, logout } from "../redux/actions";
+import splash2 from "../assets/splash2.png";
 
 class SignupForm extends Component {
   state = {
@@ -21,6 +22,7 @@ class SignupForm extends Component {
   };
 
   ButtonsView() {
+
     return (
       <View>
         <Button
@@ -49,6 +51,7 @@ class SignupForm extends Component {
         </Button>
       </View>
     );
+
   }
 
   FieldsView() {
@@ -80,10 +83,7 @@ class SignupForm extends Component {
   render() {
     return (
       <ImageBackground
-        source={{
-          uri:
-            "https://i.pinimg.com/474x/78/85/2c/78852cb7b283f3b465655c343f0ee92a.jpg"
-        }}
+        source={splash2}
         style={{ flex: 1, width: null, height: null }}
       >
         <Container>
