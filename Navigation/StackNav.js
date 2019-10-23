@@ -5,16 +5,20 @@ import ItemDetail from "../components/ItemDetail";
 import ItemList from "../components/ItemsList";
 import SignupForm from "../components/SignupForm";
 import ItemCart from "../components/ItemCart";
+import Profile from "../components/Profile";
+import EditProfile from "../components/EditProfile";
+
 const StackNav = createStackNavigator(
   {
     SingupScreen: SignupForm,
     ListScreen: ItemList,
     DetailScreen: ItemDetail,
-    CartScreen: ItemCart
-    // SearchScreen: ITemSearch
+    CartScreen: ItemCart,
+    ProfileScreen: Profile,
+    EditProfileScreen: EditProfile
   },
   {
-    initialRouteName: "SingupScreen",
+    initialRouteName: "ListScreen",
     defaultNavigationOptions: {
       headerTintColor: "white",
       headerStyle: {

@@ -7,3 +7,6 @@ export const ADD_CART = "ADD_CART";
 export const REMOVE_CART = "REMOVE_CART";
 
 export const CHECKOUT = "CHECKOUT";
+
+export const EDIT_PROFILE = "EDIT_PROFILE";
+export const FETCH_PROFILE = "FETCH_PROFILE";
