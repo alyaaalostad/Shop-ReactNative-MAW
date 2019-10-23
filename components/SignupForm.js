@@ -7,14 +7,11 @@ import {
   Item,
   Input,
   Button,
-  Text,
-  View,
   H1
 } from "native-base";
-
+import { ImageBackground, Text, View, StyleSheet } from "react-native";
 import { connect } from "react-redux";
 import { login, signup, checkForExpiredToken, logout } from "../redux/actions";
-
 class SignupForm extends Component {
   state = {
     username: "",
@@ -27,37 +24,71 @@ class SignupForm extends Component {
   ButtonsView() {
     if (this.props.user) {
       return (
-        <Button onPress={() => this.props.logout()}>
-          <Text>Logout</Text>
-        </Button>
+        <View>
+          <ImageBackground
+            source={{
+              uri:
+                "https://i.pinimg.com/474x/78/85/2c/78852cb7b283f3b465655c343f0ee92a.jpg"
+            }}
+            style={{ flex: 1, width: null, height: null }}
+          >
+            <Button
+              style={{
+                backgroundColor: "#6ea181",
+                marginTop: 40
+              }}
+              onPress={() => this.props.logout()}
+            >
+              <Text
+                style={{ marginLeft: 180, fontFamily: "TrebuchetMS-Italic" }}
+              >
+                Logout
+              </Text>
+            </Button>
+          </ImageBackground>
+        </View>
       );
     } else {
       return (
         <View>
-          <Button
-            style={{
-              backgroundColor: "#6ea181",
-              marginTop: 40,
-              width: 100,
-              height: 50,
-              marginLeft: 150
+          <ImageBackground
+            source={{
+              uri:
+                "https://i.pinimg.com/474x/78/85/2c/78852cb7b283f3b465655c343f0ee92a.jpg"
             }}
-            onPress={() => this.props.login(this.state, this.props.navigation)}
+            style={{ flex: 1, width: null, height: null }}
           >
-            <Text style={{ marginLeft: 10 }}>Login</Text>
-          </Button>
-          <Button
-            style={{
-              backgroundColor: "#6ea181",
-              marginTop: 2,
-              marginLeft: 150,
-              width: 100,
-              height: 50
-            }}
-            onPress={() => this.props.signup(this.state, this.props.navigation)}
-          >
-            <Text style={{ marginLeft: 5 }}> Signup</Text>
-          </Button>
+            <Button
+              style={{
+                backgroundColor: "#6ea181",
+                marginTop: 40
+              }}
+              onPress={() =>
+                this.props.login(this.state, this.props.navigation)
+              }
+            >
+              <Text
+                style={{ marginLeft: 155, fontFamily: "TrebuchetMS-Italic" }}
+              >
+                Login
+              </Text>
+            </Button>
+            <Button
+              style={{
+                backgroundColor: "#6ea181",
+                marginTop: 10
+              }}
+              onPress={() =>
+                this.props.signup(this.state, this.props.navigation)
+              }
+            >
+              <Text
+                style={{ marginLeft: 150, fontFamily: "TrebuchetMS-Italic" }}
+              >
+                Signup
+              </Text>
+            </Button>
+          </ImageBackground>
         </View>
       );
     }
@@ -66,7 +97,18 @@ class SignupForm extends Component {
   FieldsView() {
     const { username, password } = this.state;
     if (this.props.user) {
-      return <H1 style={{ marginTop: 15, marginBottom: 15 }}>Welcome !</H1>;
+      return (
+        <H1
+          style={{
+            marginTop: 15,
+            marginBottom: 15,
+            fontFamily: "TrebuchetMS-Italic",
+            marginLeft: 100
+          }}
+        >
+          Welcome {this.props.user.username}
+        </H1>
+      );
     } else {
       return (
         <View>
@@ -95,15 +137,23 @@ class SignupForm extends Component {
   render() {
     console.log(this.state);
     return (
-      <Container>
-        <Header />
-        <Content>
-          <Form>
-            {this.FieldsView()}
-            {this.ButtonsView()}
-          </Form>
-        </Content>
-      </Container>
+      <ImageBackground
+        source={{
+          uri:
+            "https://i.pinimg.com/474x/78/85/2c/78852cb7b283f3b465655c343f0ee92a.jpg"
+        }}
+        style={{ flex: 1, width: null, height: null }}
+      >
+        <Container>
+          <Header />
+          <Content>
+            <Form>
+              {this.FieldsView()}
+              {this.ButtonsView()}
+            </Form>
+          </Content>
+        </Container>
+      </ImageBackground>
     );
   }
 }

@@ -20,7 +20,7 @@ function ItemCard(props) {
   return (
     <ListItem>
       <Content>
-        <Card>
+        <Card style={{ borderRadius: 20 }}>
           <CardItem button onPress={handlePress}>
             <Image
               source={{ uri: item.image }}

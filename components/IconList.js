@@ -6,10 +6,10 @@ class IconRegister extends Component {
   render() {
     return (
       <Icon
-        style={{ color: "white", marginLeft: 25 }}
-        name="log-in"
-        type="Feather"
-        onPress={() => this.props.navigation.navigate("SingupScreen")}
+        style={{ color: "white", marginRight: 30 }}
+        name="home"
+        type="FontAwesome"
+        onPress={() => this.props.navigation.navigate("ListScreen")}
       />
     );
   }

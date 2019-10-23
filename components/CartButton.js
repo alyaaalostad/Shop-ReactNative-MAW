@@ -6,10 +6,11 @@ import { connect } from "react-redux";
 class CartButton extends Component {
   render() {
     return (
-      <View style={{ marginRight: 40 }}>
+      <View style={{ marginRight: 50 }}>
         <Icon
-          name="shopping-cart"
-          type="FontAwesome5"
+          name="cart"
+          type="EvilIcons"
+          style={{ color: "white", width: 30, height: 25 }}
           transparent
           onPress={() => this.props.navigation.navigate("CartScreen")}
         />
