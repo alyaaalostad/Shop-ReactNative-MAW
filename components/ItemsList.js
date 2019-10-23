@@ -1,6 +1,9 @@
 import React, { Component } from "react";
 import { connect } from "react-redux";
+
+//components
 import IconRegister from "./IconRegister";
+import IconProfile from "./IconProfile";
 
 import {
   List,
@@ -54,9 +57,11 @@ const mapDispatchToProps = dispatch => {
     checkForToken: navigation => dispatch(checkForExpiredToken(navigation))
   };
 };
+
 ItemsList.navigationOptions = () => {
   return {
-    headerLeft: <IconRegister />,
+    headerRight: <IconRegister />,
+    headerLeft: <IconProfile />
     headerRight: <CartButton />
   };
 };
