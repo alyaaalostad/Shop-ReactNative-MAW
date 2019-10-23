@@ -3,20 +3,22 @@ import { connect } from "react-redux";
 //actions
 import * as actionCreators from "../redux/actions/";
 import { addCart } from "../redux/actions";
+import { StyleSheet } from "react-native";
 import { Image } from "react-native";
 //components
 import CartButton from "./CartButton";
 import {
   Container,
   Header,
+  Title,
   Content,
+  Button,
+  Icon,
   Card,
   CardItem,
   Text,
-  Button,
-  Icon,
-  Left,
   Body,
+  Left,
   Right
 } from "native-base";
 
@@ -30,10 +32,10 @@ class ItemDetail extends Component {
 
     if (!item) return <Loading />;
     return (
-      <Container>
+      <Container style={styles.container}>
         <Content>
-          <Card style={{ flex: 0 }}>
-            <CardItem>
+          <Card style={styles.mb}>
+            <CardItem bordered>
               <Left>
                 <Body>
                   <Text>{item.title}</Text>
@@ -49,11 +51,7 @@ class ItemDetail extends Component {
                 <Text>Description: {item.description}</Text>
               </Body>
             </CardItem>
-            <CardItem>
-              <Body transparent textStyle={{ color: "#87838B" }}>
-                <Text>Quantity: {item.quantity}</Text>
-              </Body>
-            </CardItem>
+
             <CardItem>
               <Body transparent textStyle={{ color: "#87838B" }}>
                 <Text>Price: ${item.price}</Text>
@@ -76,6 +74,15 @@ class ItemDetail extends Component {
     );
   }
 }
+const styles = StyleSheet.create({
+  container: {
+    backgroundColor: "#FFF",
+    borderRadius: 20
+  },
+  mb: {
+    marginBottom: 15
+  }
+});
 
 const mapStateToProps = state => {
   return {

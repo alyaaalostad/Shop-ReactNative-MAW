@@ -1,10 +1,11 @@
 import React, { Component } from "react";
 import { connect } from "react-redux";
-
+import { ImageBackground, Text, View, StyleSheet } from "react-native";
 // NativeBase Components
-import { Text, List, Button, Container } from "native-base";
+import { List, Button, Container } from "native-base";
 // Component
 import ItemCartForm from "./ItemCartForm";
+import IconList from "./IconList";
 
 //Actions
 import { checkout } from "../redux/actions";
@@ -32,15 +33,23 @@ class ItemCart extends Component {
 
     return (
       <Container>
-        <List>
-          {cartItems}
-          <Text style={{ color: "black" }}>
-            Total:${this.Total(this.props.cart)}
-          </Text>
-          <Button full danger onPress={() => this.props.checkout()}>
-            <Text>Checkout</Text>
-          </Button>
-        </List>
+        <ImageBackground
+          source={{
+            uri:
+              "https://i.pinimg.com/474x/78/85/2c/78852cb7b283f3b465655c343f0ee92a.jpg"
+          }}
+          style={{ flex: 1, width: null, height: null }}
+        >
+          <List>
+            {cartItems}
+            <Text style={{ color: "black" }}>
+              Total:${this.Total(this.props.cart)}
+            </Text>
+            <Button success onPress={() => this.props.checkout()}>
+              <Text style={{ marginLeft: 170 }}>Checkout</Text>
+            </Button>
+          </List>
+        </ImageBackground>
       </Container>
     );
   }
@@ -55,7 +64,11 @@ const mapDispatchToProps = dispatch => {
     checkout: () => dispatch(checkout())
   };
 };
-
+ItemCart.navigationOptions = () => {
+  return {
+    headerRight: <IconList />
+  };
+};
 export default connect(
   mapStateToProps,
   mapDispatchToProps

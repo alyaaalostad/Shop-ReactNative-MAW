@@ -1,6 +1,14 @@
 import React, { Component } from "react";
 import { connect } from "react-redux";
-
+import {
+  Container,
+  Header,
+  Item,
+  Input,
+  Icon,
+  Button,
+  Text
+} from "native-base";
 import { SearchBar } from "react-native-elements";
 
 //actions
@@ -19,11 +27,16 @@ class Searchbar extends Component {
   render() {
     const search = this.state.search;
     return (
-      <SearchBar
-        placeholder="Type Here..."
-        onChangeText={this.updateSearch}
-        value={search}
-      />
+      <Header searchBar rounded>
+        <Item>
+          <Icon name="ios-search" />
+          <Input
+            placeholder="Search"
+            onChangeText={this.updateSearch}
+            value={search}
+          />
+        </Item>
+      </Header>
     );
   }
 }

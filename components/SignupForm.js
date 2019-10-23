@@ -7,12 +7,11 @@ import {
   Item,
   Input,
   Button,
-  Text,
-  View,
   H1
 } from "native-base";
-
+import { ImageBackground, Text, View, StyleSheet } from "react-native";
 import { connect } from "react-redux";
+
 import { login, signup, checkForExpiredToken } from "../redux/actions";
 
 class SignupForm extends Component {
@@ -54,7 +53,6 @@ class SignupForm extends Component {
 
   FieldsView() {
     const { username, password } = this.state;
-
     return (
       <View>
         <Item style={{ borderStyle: "solid", borderWidth: 5 }}>
@@ -76,19 +74,28 @@ class SignupForm extends Component {
         </Item>
       </View>
     );
+
   }
 
   render() {
     return (
-      <Container>
-        <Header />
-        <Content>
-          <Form>
-            {this.FieldsView()}
-            {this.ButtonsView()}
-          </Form>
-        </Content>
-      </Container>
+      <ImageBackground
+        source={{
+          uri:
+            "https://i.pinimg.com/474x/78/85/2c/78852cb7b283f3b465655c343f0ee92a.jpg"
+        }}
+        style={{ flex: 1, width: null, height: null }}
+      >
+        <Container>
+          <Header />
+          <Content>
+            <Form>
+              {this.FieldsView()}
+              {this.ButtonsView()}
+            </Form>
+          </Content>
+        </Container>
+      </ImageBackground>
     );
   }
 }

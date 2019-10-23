@@ -7,6 +7,7 @@ import SignupForm from "../components/SignupForm";
 import ItemCart from "../components/ItemCart";
 import Profile from "../components/Profile";
 import EditProfile from "../components/EditProfile";
+import WelcomePage from "../components/WelcomePage";
 
 const StackNav = createStackNavigator(
   {
@@ -19,10 +20,12 @@ const StackNav = createStackNavigator(
   },
   {
     initialRouteName: "ListScreen",
+  },
+  {
     defaultNavigationOptions: {
       headerTintColor: "white",
       headerStyle: {
-        backgroundColor: "#489c63",
+        backgroundColor: "#324917",
         fontWeight: "bold"
       }
     }
