@@ -5,7 +5,7 @@ import instance from "./instance";
 
 import { SET_CURRENT_USER } from "./actionTypes";
 
-export const checkForExpiredToken = navigation => {
+export const checkForExpiredToken = () => {
   return async dispatch => {
     const token = await AsyncStorage.getItem("token");
 
@@ -38,13 +38,14 @@ const setCurrentUser = user => ({
   payload: user
 });
 
-export const login = userData => {
+export const login = (userData, navigation) => {
   return async dispatch => {
     try {
       let response = await instance.post("login/", userData);
       let user = response.data;
       let decodedUser = jwt_decode(user.access);
       setAuthToken(user.access);
+      navigation.navigate("ListScreen");
       dispatch(setCurrentUser(decodedUser));
     } catch (error) {
       console.error(error);
@@ -52,17 +53,19 @@ export const login = userData => {
   };
 };
 
-export const signup = userData => {
+export const signup = (userData, navigation) => {
   return async dispatch => {
     try {
-      let res = await instance.post("register/", userData);
+      await instance.post("register/", userData);
+      dispatch(login(userData, navigation));
     } catch (error) {
       console.error(error);
     }
   };
 };
 
-export const logout = () => {
+export const logout = navigation => {
   setAuthToken();
+  navigation.navigate("ListScreen");
   return setCurrentUser();
 };
