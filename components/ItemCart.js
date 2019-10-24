@@ -58,7 +58,13 @@ class ItemCart extends Component {
         >
           <List>
             {cartItems}
-            <Text style={{ color: "black" }}>
+            <Text
+              style={{
+                color: "black",
+                fontFamily: "TrebuchetMS-Italic",
+                fontSize: 25
+              }}
+            >
               Total:${this.Total(this.props.cart)}
             </Text>
             {this.onClick()}

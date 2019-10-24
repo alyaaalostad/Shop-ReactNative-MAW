@@ -33,7 +33,10 @@ class ItemCartForm extends Component {
         </Body>
         <Right>
           <Button onPress={() => this.props.removeCart(cartItem)} transparent>
-            <Icon name="trash" style={{ color: "black", fontSize: 21 }} />
+            <Icon
+              name="trash"
+              style={{ color: "black", fontSize: 21, width: 40 }}
+            />
           </Button>
         </Right>
       </ListItem>

@@ -58,11 +58,10 @@ const mapDispatchToProps = dispatch => {
 
 ItemsList.navigationOptions = () => {
   return {
-
     title: "Green House",
-    headerLeft: <IconRegister />,
-    //headerLeft: <IconProfile />
-    headerRight: <CartButton />
+    headerRight: <IconRegister />,
+    headerLeft: <IconProfile />
+    // headerRight: <CartButton />
   };
 };
 

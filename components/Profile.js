@@ -40,6 +40,8 @@ class Profile extends Component {
 
     let pastOrders = [];
 
+    console.log("I AM HERE");
+    console.log(profileInfo);
     profileInfo.past_orders.map(order => {
       pastOrders.push(
         <ListItem key={order.id}>
@@ -58,7 +60,7 @@ class Profile extends Component {
               <Text>Welcome {userInfo.username}</Text>
               <Thumbnail
                 source={image}
-                style={{ borderRadius: "50%", width: "120px", height: "100px" }}
+                style={{ borderRadius: "50%", width: 120, height: 100 }}
               />
             </CardItem>
             <CardItem>
@@ -75,7 +77,7 @@ class Profile extends Component {
             <CardItem footer>
               <Button
                 bordered
-                onClick={() =>
+                onPress={() =>
                   this.props.navigation.navigate("EditProfileScreen")
                 }
               >
@@ -84,7 +86,7 @@ class Profile extends Component {
               <Button
                 bordered
                 danger
-                onClick={() => this.props.logout(this.props.navigation)}
+                onPress={() => this.props.logout(this.props.navigation)}
               >
                 <Text>Logout</Text>
               </Button>
